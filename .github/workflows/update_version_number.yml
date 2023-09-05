@@ -9,14 +9,20 @@ jobs:
   update-version:
     runs-on: windows-latest
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
 
-      - name: Update Version Number
-        run: |
-          # Assuming your version is in the format "Version: X.X"
-          CURRENT_VERSION=$$(grep -oP 'Version: \K\d+\.\d+' app.js)
-          NEW_VERSION=$$(echo "$$CURRENT_VERSION + 0.01" | bc)
-          sed -i "s/Version: $$CURRENT_VERSION/Version: $$NEW_VERSION/" app.js
+    steps:
+        - name: Set up Node.js
+          uses: actions/setup-node@v2
+          with:
+            node-version: 16 # Specify the desired Node.js version
+  
+        - name: Checkout Repository
+          uses: actions/checkout@v2
+  
+        - name: Update Version Number
+          run: |
+            # Assuming your version is in the format "Version: X.X"
+            CURRENT_VERSION=$$(grep -oP 'Version: \K\d+\.\d+' app.js)
+            NEW_VERSION=$$(echo "$$CURRENT_VERSION + 0.01" | bc)
+            sed -i "s/Version: $$CURRENT_VERSION/Version: $$NEW_VERSION/" app.js
 
