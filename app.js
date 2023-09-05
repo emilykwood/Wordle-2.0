@@ -1,3 +1,6 @@
+//Author: Emily
+//Version: 1.0
+
 $(document).ready(function () {
     randomWord();
     $("button").click(function () {

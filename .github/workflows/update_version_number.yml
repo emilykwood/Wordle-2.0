@@ -1,0 +1,22 @@
+name: Update Version Number
+
+on:
+  push:
+    branches:
+      - main # Change this to your main branch name
+
+jobs:
+  update-version:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Update Version Number
+        run: |
+          # Assuming your version is in the format "Version: X.X"
+          CURRENT_VERSION=$$(grep -oP 'Version: \K\d+\.\d+' app.js)
+          NEW_VERSION=$$(echo "$$CURRENT_VERSION + 0.01" | bc)
+          sed -i "s/Version: $$CURRENT_VERSION/Version: $$NEW_VERSION/" app.js
+
