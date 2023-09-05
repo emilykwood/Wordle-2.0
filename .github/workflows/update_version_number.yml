@@ -34,4 +34,4 @@ jobs:
     
         - name: Push Changes
           run: |
-              git push origin main # Change 'main' to your branch name
+              git push 
