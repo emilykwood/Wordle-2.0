@@ -18,6 +18,8 @@ jobs:
           shell: bash
           run: |
             # Assuming your version is in the format "Version: X.X"
+            # Set the locale to 'C' - put this in because script wouldnt recognise 'grep' without it
+            export LC_ALL=C  
             CURRENT_VERSION=$(grep -oP 'Version: \K\d+\.\d+' app.js)
             NEW_VERSION=$(echo "$CURRENT_VERSION + 0.01" | bc)
             sed -i "s/Version: $CURRENT_VERSION/Version: $NEW_VERSION/" app.js
