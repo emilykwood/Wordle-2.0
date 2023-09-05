@@ -23,7 +23,7 @@ jobs:
             sudo apt-get update
             CURRENT_VERSION=$(grep -oP 'Version: \K\d+\.\d+' app.js)
             echo "Current Version: $CURRENT_VERSION"
-            NEW_VERSION=$(echo "$CURRENT_VERSION + 0.01" | bc)
+            NEW_VERSION=$(echo "$CURRENT_VERSION + 0.1" | bc)
             echo "New Version: $NEW_VERSION"
             sed -i "s/Version: $CURRENT_VERSION/Version: $NEW_VERSION/" app.js
 
