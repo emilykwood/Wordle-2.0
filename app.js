@@ -103,4 +103,4 @@ function validateGuess() {
     guess = ""
 }
 
-//Adding a comment to the end to test some automation I am trying to write.
+//Adding this comment to test my automation
