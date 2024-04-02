@@ -1,5 +1,5 @@
 //Author: Emily
-//Version: 1.11
+//Version: 1.21
 
 $(document).ready(function () {
     randomWord();
